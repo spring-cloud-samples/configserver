@@ -1,14 +1,36 @@
 spring:
   application:
-    name: eureka
+    name: configserver
+
+server:
+  port: 8888
+
 management:
   context-path: /admin
+  
+service:
+  definition:
+    metadata:
+      uri: http://localhost:${server.port}
+
 eureka:
-  server:
-    waitTimeInMsWhenSyncEmpty: 1000
   client:
     serviceUrl:
       defaultZone: http://localhost:8080/v2/
       default.defaultZone: http://localhost:8080/v2/
-    registerWithEureka: false
-    fetchRegistry: false
+  instance:
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+    
+---
+spring:
+  profiles: cloud
+eureka:
+  instance:
+    hostname: configserver.${application.domain:cfapps.io}
+    nonSecurePort: 80
+service:
+  definition:
+    metadata:
+      uri: http://configserver.${application.domain:cfapps.io}
+    
