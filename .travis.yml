@@ -1,11 +1,11 @@
 language: java
-deploy:
-  edge: true
-  provider: cloudfoundry
-  username:
-    secure: QaQtYdgFsmOp8/UUTdAl/BwKOxLztAj+VkWegYdUMhXA9sWgG27shTgqR5tSo0Lcxsx0BwUNJ7hwR+40sufwHbStTUMuH6EWtSByWgjhSw5AOR3UbPk3ANPIzfdF1WmrhnAFsoLuLZCJuB7KAMlauTBgwXXYU2S6OhBZ8D8hQ9M=
-  password:
-    secure: EKziIBMResSwj6f34ruXLgml6MzNDWft0IsERN8uzMM6bHGR6c3U6qn4DCeEqaZXRdpFm4/uHcLXI9t1Ki70YSj+vhxzQrnmjLcYitOzf9vvuZvfz7djRHVJwVUDpCGIZQkIr/HsCsxfyaQaUmAVFsCGT0I1E9XsS+WA8E5wlSM= 
-  api: https://api.23.23.221.131.xip.io
-  organization: default
-  space: development
+script: mvn package -nsu -Dmaven.test.redirectTestOutputToFile=true
+after_success:
+- if [[ "$TRAVIS_BRANCH" != "master" ]]; then echo "Deployments are only done for
+  the master branch. "; exit 0; fi
+- echo "Deploying build $TRAVIS_BUILD_NUMBER to cloudfoundry"
+- ./cf/deploy.sh
+env:
+  global:
+  - secure: QTAkcPtexO3vQOZFN6RSBVaBDvHBLcGxWIXpVLb/e+3GHqUS/TyJBdtP2pPnq2FFN5hhRwsDZSVPFzm5+rMEWO2xrslk3ZMhf31bNhSVMmx+jIEUdoMocP6zLlKvnw1ba5qLAsDOTxIqEnopyzkTdFjxI4jPV+n4CGWo274289A=
+  - secure: ajt/4QsNz8392VyREIfOP8+wv4v68xjUN16DYiSOlO9NtV+EgYiXL7w1oSvpGkh1UObFmGjcAKpstbVjz/+rRKMSSkrF9DuUDKpKpBSLvjHqApwVpWcCV2hPmLwYJMBOiWTmEFUlixnbzBgfWyFkA3dmH4w/fToAzPqsXaskClc=

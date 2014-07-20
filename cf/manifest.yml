@@ -1,7 +1,7 @@
 ---
 applications:
-- name: configserver
+- name: eureka
   memory: 1024M
   instances: 1
-  host: configserver
+  host: eureka
   path: target/demo-0.0.1-SNAPSHOT.jar
