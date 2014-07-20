@@ -1,0 +1,7 @@
+---
+applications:
+- name: configserver
+  memory: 1024M
+  instances: 1
+  host: configserver
+  path: target/demo-0.0.1-SNAPSHOT.jar
