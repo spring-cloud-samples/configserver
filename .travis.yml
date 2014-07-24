@@ -1,4 +1,5 @@
 language: java
+before_install: git clone https://github.com/dsyer/spring-security-rsa tmp && (cd tmp && mvn install -DskipTests=true)
 script: mvn package -nsu -Dmaven.test.redirectTestOutputToFile=true
 after_success:
 - if [[ "$TRAVIS_BRANCH" != "master" ]]; then echo "Deployments are only done for
