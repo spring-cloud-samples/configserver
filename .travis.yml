@@ -8,5 +8,6 @@ after_success:
 - ./cf/deploy.sh
 env:
   global:
+  - APP=configserver
   - secure: QTAkcPtexO3vQOZFN6RSBVaBDvHBLcGxWIXpVLb/e+3GHqUS/TyJBdtP2pPnq2FFN5hhRwsDZSVPFzm5+rMEWO2xrslk3ZMhf31bNhSVMmx+jIEUdoMocP6zLlKvnw1ba5qLAsDOTxIqEnopyzkTdFjxI4jPV+n4CGWo274289A=
   - secure: ajt/4QsNz8392VyREIfOP8+wv4v68xjUN16DYiSOlO9NtV+EgYiXL7w1oSvpGkh1UObFmGjcAKpstbVjz/+rRKMSSkrF9DuUDKpKpBSLvjHqApwVpWcCV2hPmLwYJMBOiWTmEFUlixnbzBgfWyFkA3dmH4w/fToAzPqsXaskClc=
