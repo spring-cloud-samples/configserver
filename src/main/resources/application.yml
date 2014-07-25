@@ -16,4 +16,16 @@ eureka:
   instance:
     statusPageUrlPath: /admin/info
     healthCheckUrlPath: /admin/health
-    
+
+---
+spring:
+  profiles: cloud
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.eureka.credentials.uri:http://eureka.${application.domain:cfapps.io}/}v2/
+cloudfoundry:
+  service:
+    definition:
+      metadata:
+        uri: http://configserver.${application.domain:cfapps.io}  
