@@ -23,9 +23,12 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${vcap.services.eureka.credentials.uri:http://eureka.${application.domain:cfapps.io}/}v2/
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://${PREFIX:}eureka.${application.domain:cfapps.io}}/v2/
+  instance:
+    hostname: ${PREFIX:}${spring.application.name}.${application.domain:cfapps.io}
+    nonSecurePort: 80    
 cloudfoundry:
   service:
     definition:
       metadata:
-        uri: http://configserver.${application.domain:cfapps.io}  
+        uri: http://${PREFIX:}configserver.${application.domain:cfapps.io}  
