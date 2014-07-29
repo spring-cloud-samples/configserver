@@ -3,14 +3,6 @@ server:
 
 management:
   context-path: /admin
-  
-cloudfoundry:
-  service:
-    broker:
-      description: Spring platform config server
-    definition:
-      metadata:
-        uri: http://localhost:${server.port}
 
 eureka:
   instance:
@@ -26,9 +18,4 @@ eureka:
       defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://${PREFIX:}eureka.${application.domain:cfapps.io}}/v2/
   instance:
     hostname: ${PREFIX:}${spring.application.name}.${application.domain:cfapps.io}
-    nonSecurePort: 80    
-cloudfoundry:
-  service:
-    definition:
-      metadata:
-        uri: http://${PREFIX:}configserver.${application.domain:cfapps.io}  
+    nonSecurePort: 80
