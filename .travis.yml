@@ -1,13 +1,3 @@
 language: java
 before_install: git clone https://github.com/dsyer/spring-security-rsa tmp && (cd tmp && mvn install -DskipTests=true)
 script: mvn package -nsu -Dmaven.test.redirectTestOutputToFile=true
-after_success:
-- if [[ "$TRAVIS_BRANCH" != "master" ]]; then echo "Deployments are only done for
-  the master branch. "; exit 0; fi
-- echo "Deploying build $TRAVIS_BUILD_NUMBER to cloudfoundry"
-- ./cf/deploy.sh
-env:
-  global:
-  - APP=configserver
-  - secure: QTAkcPtexO3vQOZFN6RSBVaBDvHBLcGxWIXpVLb/e+3GHqUS/TyJBdtP2pPnq2FFN5hhRwsDZSVPFzm5+rMEWO2xrslk3ZMhf31bNhSVMmx+jIEUdoMocP6zLlKvnw1ba5qLAsDOTxIqEnopyzkTdFjxI4jPV+n4CGWo274289A=
-  - secure: ajt/4QsNz8392VyREIfOP8+wv4v68xjUN16DYiSOlO9NtV+EgYiXL7w1oSvpGkh1UObFmGjcAKpstbVjz/+rRKMSSkrF9DuUDKpKpBSLvjHqApwVpWcCV2hPmLwYJMBOiWTmEFUlixnbzBgfWyFkA3dmH4w/fToAzPqsXaskClc=
