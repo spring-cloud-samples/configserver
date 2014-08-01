@@ -3,6 +3,10 @@ server:
 
 management:
   context-path: /admin
+  
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
 
 eureka:
   instance:
