@@ -22,7 +22,7 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.platform</groupId>
-				<artifactId>spring-platform-config</artifactId>
+				<artifactId>spring-platform-starters</artifactId>
 				<version>1.0.0.BUILD-SNAPSHOT</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -37,8 +37,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.platform</groupId>
-			<artifactId>spring-platform-cloudfoundry</artifactId>
-			<version>1.0.0.BUILD-SNAPSHOT</version>
+			<artifactId>spring-platform-starter-eureka</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
