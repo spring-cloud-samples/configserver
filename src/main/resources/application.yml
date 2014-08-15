@@ -13,6 +13,14 @@ eureka:
     statusPageUrlPath: /admin/info
     healthCheckUrlPath: /admin/health
 
+spring:
+  platform:
+    config:
+      server:
+        basedir: target/config
+
+# TODO: move these profiles to the remote repo
+
 ---
 spring:
   profiles: cloud
