@@ -17,6 +17,7 @@ spring:
   platform:
     config:
       server:
+        uri: https://github.com/spring-platform-samples/config-repo
         basedir: target/config
 
 # TODO: move these profiles to the remote repo
