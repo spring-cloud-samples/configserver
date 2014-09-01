@@ -7,6 +7,12 @@ management:
 logging:
   level:
     com.netflix.discovery: 'OFF'
+    
+encrypt:
+  keyStore:
+    location: classpath:keystore.jks
+    password: foobar
+    alias: test
 
 eureka:
   instance:
