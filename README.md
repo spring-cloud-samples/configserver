@@ -3,7 +3,7 @@
 Run this project as a Spring Boot app (e.g. import into IDE and run
 main method, or use "mvn spring-boot:run"). It will start up on port
 8888 and serve configuration data from
-"https://github.com/scratches/config-repo".
+"https://github.com/spring-cloud-samples/config-repo".
 
 ## Resources
 
