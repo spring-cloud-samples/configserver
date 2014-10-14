@@ -11,8 +11,12 @@ logging:
     
 eureka:
   instance:
+    leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /admin/info
     healthCheckUrlPath: /admin/health
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:password@localhost:8761}/v2/
 
 spring:
   cloud:
@@ -31,9 +35,6 @@ security:
 spring:
   profiles: cloud
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://${PREFIX:}eureka.${application.domain:cfapps.io}}/v2/
   instance:
     hostname: ${PREFIX:}${spring.application.name}.${application.domain:cfapps.io}
     nonSecurePort: 80
