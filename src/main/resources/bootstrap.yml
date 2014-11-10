@@ -1,6 +1,10 @@
 spring:
   application:
     name: configserver
+  cloud:
+    config:
+      server:
+        bootstrap: true
 encrypt:
   keyStore:
     location: classpath:keystore.jks
