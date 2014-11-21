@@ -1,11 +1,6 @@
 spring:
   application:
     name: configserver
-  cloud:
-    config:
-      server:
-        prefix: /config
-        bootstrap: true
 encrypt:
   failOnError: false
   keyStore:
