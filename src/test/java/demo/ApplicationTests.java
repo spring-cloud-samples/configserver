@@ -6,9 +6,7 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
@@ -24,17 +22,15 @@ import org.springframework.util.MultiValueMap;
 @WebAppConfiguration
 @IntegrationTest("server.port=0")
 public class ApplicationTests {
-	
+
 	@Value("${local.server.port}")
 	private int port = 0;
-	
-	@Autowired
-	private SecurityProperties security;
 
 	@Test
 	public void configurationAvailable() {
 		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = new TestRestTemplate("user", security.getUser().getPassword()).getForEntity("http://localhost:" + port + "/app/cloud", Map.class);
+		ResponseEntity<Map> entity = new TestRestTemplate().getForEntity(
+				"http://localhost:" + port + "/app/cloud", Map.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
 
@@ -42,16 +38,9 @@ public class ApplicationTests {
 	public void envPostAvailable() {
 		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
 		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = new TestRestTemplate("user", security.getUser().getPassword()).postForEntity("http://localhost:" + port + "/admin/env", form , Map.class);
+		ResponseEntity<Map> entity = new TestRestTemplate().postForEntity(
+				"http://localhost:" + port + "/admin/env", form, Map.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
-	}
-
-	@Test
-	public void envPostSecure() {
-		MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = new TestRestTemplate().postForEntity("http://localhost:" + port + "/admin/env", form , Map.class);
-		assertEquals(HttpStatus.UNAUTHORIZED, entity.getStatusCode());
 	}
 
 }
