@@ -14,13 +14,30 @@ eureka:
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /admin/info
     healthCheckUrlPath: /admin/health
-    hostname: ${CF_INSTANCE_IP:localhost}
-    nonSecurePort: ${CF_INSTANCE_PORT:${PORT:${server.port:8888}}}
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
 
 spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          basedir: target/config
+
+---
+spring:
+  profiles: cloud
+eureka:
+  password: password
+  instance:
+    hostname: ${vcap.application.uris[0]}
+    nonSecurePort: 80
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
+
+---
+spring:
+  profiles: lattice
   cloud:
     config:
       server:
@@ -32,6 +49,11 @@ spring:
             instance:
               hostname: $\{CF_INSTANCE_IP:localhost}
               nonSecurePort: $\{CF_INSTANCE_PORT:$\{PORT:$\{server.port:8080}}}      
-        git:
-          uri: https://github.com/spring-cloud-samples/config-repo
-          basedir: target/config
+eureka:
+  instance:
+    hostname: ${CF_INSTANCE_IP:localhost}
+    nonSecurePort: ${CF_INSTANCE_PORT:${PORT:${server.port:8888}}}
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
+          
