@@ -17,17 +17,28 @@ $ java -jar target/*.jar
 It will start up on port 8888 and serve configuration data from
 "https://github.com/spring-cloud-samples/config-repo":
 
+## Pre-requisites
+
+You need to be running redis locally (there is a `docker-compose.yml` if you would
+like to use that). This is to support broadcast of config changes to client apps
+via Spring Cloud Stream. If you want to play and don't need that feature just
+comment out the monitor and redis dependencies.
+
 ## Resources
 
 | Path             | Description  |
 |------------------|--------------|
 | /{app}/{profile} | Configuration data for app in Spring profile (comma-separated).|
 | /{app}/{profile}/{label} | Add a git label |
+| /{app}/{profiels}{label}/{path} | An environment-specific plain text config file (at "path") |
 
 ## Security
 
-The server is protected by HTTP Basic authentication. The user name is
-"user" and the password is printed on the console on startup (standard Spring Boot approach), e.g.
+The server is not secure by default. You can add HTTP Basic
+authentication by including an extra dependency on Spring Security
+(e.g. via `spring-boot-starter-security`). The user name is "user" and
+the password is printed on the console on startup (standard Spring
+Boot approach), e.g.
 
 ```
 2014-10-23 08:55:01.579  INFO 8185 --- [           main] b.a.s.AuthenticationManagerConfiguration : 
