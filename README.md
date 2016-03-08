@@ -4,13 +4,13 @@ Run this project as a Spring Boot app, e.g. import into IDE and run
 main method, or use Maven: 
 
 ```
-$ mvn spring-boot:run
+$ ./mvnw spring-boot:run
 ```
 
 or
 
 ```
-$ mvn package
+$ ./mvnw package
 $ java -jar target/*.jar
 ```
 
