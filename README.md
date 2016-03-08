@@ -1,5 +1,7 @@
 # Config Server Sample
 
+NOTE: This project requires rabbitmq running on localhost.
+
 Run this project as a Spring Boot app, e.g. import into IDE and run
 main method, or use Maven: 
 
