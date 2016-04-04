@@ -35,25 +35,3 @@ eureka:
     serviceUrl:
       defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
 
----
-spring:
-  profiles: lattice
-  cloud:
-    config:
-      server:
-        overrides:
-          eureka:
-            client:
-              serviceUrl:
-                defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
-            instance:
-              hostname: $\{CF_INSTANCE_IP:localhost}
-              nonSecurePort: $\{CF_INSTANCE_PORT:$\{PORT:$\{server.port:8080}}}      
-eureka:
-  instance:
-    hostname: ${CF_INSTANCE_IP:localhost}
-    nonSecurePort: ${CF_INSTANCE_PORT:${PORT:${server.port:8888}}}
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
-          
