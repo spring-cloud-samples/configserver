@@ -3,7 +3,7 @@
 NOTE: This project requires rabbitmq running on localhost.
 
 Run this project as a Spring Boot app, e.g. import into IDE and run
-main method, or use Maven: 
+main method, or use Maven:
 
 ```
 $ ./mvnw spring-boot:run
@@ -21,10 +21,10 @@ It will start up on port 8888 and serve configuration data from
 
 ## Pre-requisites
 
-You need to be running redis locally (there is a `docker-compose.yml` if you would
+You need to be running rabbitmq locally (there is a `docker-compose.yml` if you would
 like to use that). This is to support broadcast of config changes to client apps
 via Spring Cloud Stream. If you want to play and don't need that feature just
-comment out the monitor and redis dependencies.
+comment out the monitor and rabbitmq dependencies.
 
 ## Resources
 
@@ -43,7 +43,7 @@ the password is printed on the console on startup (standard Spring
 Boot approach), e.g.
 
 ```
-2014-10-23 08:55:01.579  INFO 8185 --- [           main] b.a.s.AuthenticationManagerConfiguration : 
+2014-10-23 08:55:01.579  INFO 8185 --- [           main] b.a.s.AuthenticationManagerConfiguration :
 
 Using default security password: 83805c57-8c76-4940-ae17-299359888177
 
