@@ -32,7 +32,7 @@ comment out the monitor and rabbitmq dependencies.
 |------------------|--------------|
 | /{app}/{profile} | Configuration data for app in Spring profile (comma-separated).|
 | /{app}/{profile}/{label} | Add a git label |
-| /{app}/{profiels}{label}/{path} | An environment-specific plain text config file (at "path") |
+| /{app}/{profile}{label}/{path} | An environment-specific plain text config file (at "path") |
 
 ## Security
 
