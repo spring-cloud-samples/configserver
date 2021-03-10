@@ -2,8 +2,15 @@ server:
   port: 8888
 
 management:
-  context-path: /admin
-  
+  endpoints:
+    web:
+      base-path: "/admin"
+      exposure:
+        include: "*"
+  endpoint:
+    env:
+      post:
+        enabled: true
 logging:
   level:
     com.netflix.discovery: 'OFF'
